@@ -15,7 +15,6 @@ public class KafkaTopicConfig {
 	@Bean
 	public NewTopic myTopic() {
 		return TopicBuilder.name(topicName)
-				       .partitions(5)
 				       .build();
 	}
 }

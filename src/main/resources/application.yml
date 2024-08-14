@@ -7,12 +7,24 @@ spring:
       group-id: myGroup                 # identyfikator grupy konsumenta
       auto-offset-reset: earliest       # przesuni?cie na najwcze?niejsz? wiadomo??, je?li offset nie istnieje
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # deserializacja klucza
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # deserializacja warto?ci
+      #value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # deserializacja warto?ci\
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
 
     producer:
       bootstrap-servers: localhost:9092 # serwer Kafki dla producenta
       key-serializer: org.apache.kafka.common.serialization.StringSerializer # serializacja klucza
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer # serializacja warto?ci
+      #value-serializer: org.apache.kafka.common.serialization.StringSerializer # serializacja warto?ci
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+server:
+  port: 1234
+
 
 kafka:
   topic-name: my-topic
+
+
+springdoc:
+  api-docs:
+    path: /doc-api
