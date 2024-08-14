@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: kafka-starter # nazwa aplikacji
+  kafka:
+    consumer: # ustawienia konsumenta
+      bootstrap-servers: localhost:9092 # serwer Kafki dla konsumenta
+      group-id: myGroup                 # identyfikator grupy konsumenta
+      auto-offset-reset: earliest       # przesuni?cie na najwcze?niejsz? wiadomo??, je?li offset nie istnieje
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # deserializacja klucza
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # deserializacja warto?ci
+
+    producer:
+      bootstrap-servers: localhost:9092 # serwer Kafki dla producenta
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # serializacja klucza
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer # serializacja warto?ci
+
+kafka:
+  topic-name: my-topic
